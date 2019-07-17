@@ -1,23 +1,22 @@
 describe App do
-
-  describe 'GET /' do
-    before do 
-      get '/'
+  describe "GET /" do
+    before do
+      get "/"
     end
 
-    it 'sends a 200 status code' do
+    it "sends a 200 status code" do
       expect(last_response.status).to eq(200)
     end
 
-    it 'renders super hero form' do 
+    it "renders super hero form" do
       expect(last_response.body).to include("Create a Team and Heroes!")
       expect(last_response.body).to include("<form")
     end
   end
 
-  describe 'POST /teams' do
-    it 'submits the form' do
-      visit '/'
+  describe "POST /teams" do
+    it "submits the form" do
+      visit "/"
       fill_in("team[name]", :with => "Team Ruby")
       fill_in("team[motto]", :with => "We love Ruby!")
       fill_in("member1_name", :with => "Amanda")
@@ -29,7 +28,7 @@ describe App do
       fill_in("member3_name", :with => "Katie")
       fill_in("member3_power", :with => "Sinatra")
       fill_in("member3_bio", :with => "I love Sinatra!")
-      click_button 'submit'
+      click_button "submit"
 
       expect(page).to have_text("Team Ruby")
       expect(page).to have_text("Team Motto: We love Ruby!")
@@ -44,5 +43,4 @@ describe App do
       expect(page).to have_text("Hero Biography: I love Sinatra!")
     end
   end
-  
 end
